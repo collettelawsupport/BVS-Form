@@ -1,0 +1,98 @@
+{
+  "petitioner": {
+    "firstName": "Alex",
+    "middleName": "Marie",
+    "lastName": "Petitioner",
+    "suffix": "",
+    "maidenName": "Former",
+    "placeOfBirth": "Palestine, Texas",
+    "race": "White",
+    "dateOfBirth": "01/15/1988",
+    "residence": {
+      "street": "101 Oak Street",
+      "city": "Palestine",
+      "state": "TX",
+      "zip": "75801"
+    }
+  },
+  "respondent": {
+    "firstName": "Jordan",
+    "middleName": "Lee",
+    "lastName": "Respondent",
+    "suffix": "Jr.",
+    "maidenName": "",
+    "placeOfBirth": "Tyler, Texas",
+    "race": "Black",
+    "dateOfBirth": "03/20/1986",
+    "residence": {
+      "street": "202 Pine Avenue",
+      "city": "Tyler",
+      "state": "TX",
+      "zip": "75701"
+    }
+  },
+  "marriage": {
+    "numberOfMinorChildren": 4,
+    "dateOfMarriage": "06/12/2012",
+    "placeOfMarriage": "Anderson County, Texas"
+  },
+  "childrenAffected": true,
+  "children": [
+    {
+      "firstName": "Taylor",
+      "middleName": "Rae",
+      "lastName": "Respondent",
+      "suffix": "",
+      "dateOfBirth": "07/01/2014",
+      "sex": "Female",
+      "birthplace": {
+        "city": "Palestine",
+        "county": "Anderson",
+        "state": "TX"
+      },
+      "priorName": ""
+    },
+    {
+      "firstName": "Morgan",
+      "middleName": "",
+      "lastName": "Respondent",
+      "suffix": "",
+      "dateOfBirth": "09/08/2016",
+      "sex": "Male",
+      "birthplace": {
+        "city": "Tyler",
+        "county": "Smith",
+        "state": "TX"
+      },
+      "priorName": ""
+    },
+    {
+      "firstName": "Casey",
+      "middleName": "Ann",
+      "lastName": "Respondent",
+      "suffix": "",
+      "dateOfBirth": "11/11/2018",
+      "sex": "Female",
+      "birthplace": {
+        "city": "Palestine",
+        "county": "Anderson",
+        "state": "TX"
+      },
+      "priorName": "Casey Ann Petitioner"
+    },
+    {
+      "firstName": "Riley",
+      "middleName": "",
+      "lastName": "Respondent",
+      "suffix": "",
+      "dateOfBirth": "12/24/2020",
+      "sex": "Unknown",
+      "birthplace": {
+        "city": "Dallas",
+        "county": "Dallas",
+        "state": "TX"
+      },
+      "priorName": ""
+    }
+  ]
+}
