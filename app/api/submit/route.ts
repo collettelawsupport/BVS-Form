@@ -49,7 +49,7 @@ export async function POST(request: Request) {
       {
         ok: false,
         message:
-          "The intake was received but the PDF could not be generated or delivered. Please contact the office."
+          "The form was received but the PDF could not be generated or delivered. Please contact the office."
       },
       { status: 500 }
     );

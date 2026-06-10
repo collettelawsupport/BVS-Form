@@ -29,7 +29,7 @@ export function ConfirmationDetails() {
         </div>
       )}
       <Link className="secondary-action" href="/">
-        Start another intake
+        Start another form
       </Link>
     </>
   );

@@ -664,7 +664,7 @@ export function IntakeForm() {
           Required fields are marked with <span aria-hidden="true">*</span>.
         </p>
         <button type="submit" className="primary-action" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Submit intake"}
+          {isSubmitting ? "Submitting..." : "Submit form"}
         </button>
       </div>
     </form>

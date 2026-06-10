@@ -266,52 +266,70 @@ const html = String.raw`<!doctype html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VS-165 Intake Preview</title>
+  <title>VS-165 Vital Statistics Form Preview</title>
   <style>
-    :root { --bg: #f6f7f4; --card: #fff; --text: #17211d; --muted: #5d6862; --line: #cdd8d2; --accent: #0f766e; --accent-dark: #0b5d56; --danger: #b42318; --warn: #fff7df; }
+    :root { --bg: #f7f7f8; --card: #fff; --text: #20242b; --heading: #252a32; --muted: #667085; --line: #e7d9d5; --input-line: #cfd6e1; --navy: #0b1f3a; --navy-dark: #07172b; --rose: #d89b8c; --rose-deep: #9f5f68; --danger: #b42318; --warn: #fff7f4; }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.5; }
-    main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 56px; }
-    h1 { margin: 0; max-width: 780px; font-size: 4.2rem; line-height: .96; letter-spacing: 0; }
-    h2 { margin: 0 0 14px; font-size: 1.22rem; letter-spacing: 0; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: Arial, Helvetica, sans-serif; line-height: 1.5; }
+    .brand-header { color: #fff; background: radial-gradient(circle at 10% 0%, rgba(216,155,140,.16), transparent 28rem), linear-gradient(135deg, var(--navy-dark), var(--navy)); border-bottom: 5px solid var(--rose); }
+    .brand-inner { display: flex; width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 26px 0 28px; gap: 22px; align-items: center; }
+    .brand-logo { width: 118px; height: 118px; border: 1px solid rgba(216,155,140,.55); border-radius: 8px; background: rgba(255,255,255,.04); object-fit: contain; }
+    .brand-kicker { margin: 0 0 4px; color: #f1c5bb; font-size: .82rem; font-weight: 800; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 840px; color: #fff; font-size: clamp(2rem, 5vw, 3.05rem); line-height: 1.05; letter-spacing: 0; }
+    .brand-subtitle { display: block; margin-top: 8px; color: #f8e7e1; font-size: 1rem; }
+    main { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 56px; }
+    h2 { margin: 0 0 14px; color: var(--heading); font-size: 1.22rem; letter-spacing: 0; }
     h3 { margin: 0; font-size: 1rem; letter-spacing: 0; }
     p { color: var(--muted); }
-    .eyebrow { margin: 0 0 10px; color: var(--accent-dark); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0; }
+    .eyebrow { margin: 0 0 10px; color: var(--rose-deep); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0; }
     form { display: grid; gap: 18px; margin-top: 24px; }
-    fieldset, .notice { min-width: 0; margin: 0; padding: 22px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.9); box-shadow: 0 18px 50px rgba(23,33,29,.1); }
+    fieldset, .notice { min-width: 0; margin: 0; padding: 22px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); box-shadow: 0 18px 48px rgba(11,31,58,.08); }
+    form fieldset:nth-of-type(even) { background: #f7f4f3; }
     .grid { display: grid; gap: 14px; }
     .name-grid { grid-template-columns: minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.1fr) minmax(88px,.38fr); }
     .two-col { grid-template-columns: repeat(2,minmax(0,1fr)); margin-top: 14px; }
     .three-col { grid-template-columns: minmax(160px,.62fr) minmax(160px,.62fr) minmax(0,1.25fr); }
     .address-grid { grid-template-columns: minmax(0,1.6fr) minmax(0,.9fr) minmax(82px,.34fr) minmax(110px,.42fr); margin-top: 14px; }
     label { display: grid; gap: 6px; min-width: 0; color: var(--muted); font-size: .92rem; font-weight: 700; }
-    input, select { width: 100%; min-height: 44px; border: 1px solid #bfcac4; border-radius: 6px; padding: 9px 11px; color: var(--text); background: #fff; font: inherit; }
-    input:focus, select:focus, button:focus-visible, a:focus-visible { border-color: #b45309; outline: none; box-shadow: 0 0 0 3px rgba(180,83,9,.18); }
+    input, select { width: 100%; min-height: 44px; border: 1px solid var(--input-line); border-radius: 6px; padding: 9px 11px; color: var(--text); background: #fff; font: inherit; }
+    input:focus, select:focus, button:focus-visible, a:focus-visible { border-color: var(--rose); outline: none; box-shadow: 0 0 0 3px rgba(216,155,140,.28); }
     em { color: var(--danger); font-style: normal; }
     .row-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 14px; }
     .children { display: grid; gap: 14px; margin-top: 18px; }
-    .child { padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: #fbfcfa; }
+    .child { padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.72); }
     .actions { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
     button, a.button { min-height: 42px; border-radius: 6px; font-weight: 800; font: inherit; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
-    button.primary { border: 1px solid var(--accent-dark); padding: 0 18px; color: #fff; background: var(--accent); }
-    button.secondary, a.button { border: 1px solid var(--accent); padding: 0 14px; color: var(--accent-dark); background: #fff; }
+    button.primary { border: 1px solid var(--navy); padding: 0 18px; color: #fff; background: var(--navy); }
+    button.primary:hover { background: var(--navy-dark); }
+    button.secondary, a.button { border: 1px solid rgba(159,95,104,.44); padding: 0 14px; color: var(--navy); background: #fff; }
+    button.secondary:hover, a.button:hover { border-color: var(--rose-deep); background: #fff7f4; }
     button.text { border: 0; color: var(--danger); background: transparent; padding: 0 8px; }
-    .choice { display: inline-grid; grid-template-columns: repeat(2, minmax(90px,1fr)); gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 8px; background: #eef4f1; }
+    .choice { display: inline-grid; grid-template-columns: repeat(2, minmax(90px,1fr)); gap: 4px; padding: 4px; border: 1px solid rgba(159,95,104,.36); border-radius: 8px; background: #fff; }
     .choice label { position: relative; display: block; }
     .choice input { position: absolute; inset: 0; opacity: 0; }
     .choice span { display: grid; min-height: 38px; place-items: center; border-radius: 6px; color: var(--muted); font-weight: 800; }
-    .choice input:checked + span { color: #fff; background: var(--accent); }
+    .choice input:checked + span { color: #fff; background: var(--navy); }
     .error { color: #7a1a12; background: #fff0ee; border-color: rgba(180,35,24,.38); }
-    .warning { color: #6f4b00; background: var(--warn); border-color: #e6b450; }
+    .warning { color: var(--rose-deep); background: var(--warn); border-color: rgba(216,155,140,.7); }
     .notice[hidden] { display: none; }
-    @media (max-width: 860px) { h1 { font-size: 3rem; } .name-grid, .two-col, .three-col, .address-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .address-grid label:first-child, .three-col label:last-child { grid-column: 1 / -1; } }
-    @media (max-width: 620px) { main { width: min(100% - 24px,1120px); padding-top: 22px; } h1 { font-size: 2.25rem; } fieldset, .notice { padding: 16px; } .name-grid, .two-col, .three-col, .address-grid { grid-template-columns: 1fr; } .actions { display: grid; } button.primary, button.secondary, a.button { width: 100%; } }
+    @media (max-width: 860px) { .brand-inner { align-items: flex-start; } .brand-logo { width: 92px; height: 92px; } .name-grid, .two-col, .three-col, .address-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .address-grid label:first-child, .three-col label:last-child { grid-column: 1 / -1; } }
+    @media (max-width: 620px) { .brand-inner { width: min(100% - 24px,1080px); padding: 20px 0 22px; gap: 14px; } .brand-logo { width: 72px; height: 72px; } h1 { font-size: 1.8rem; } .brand-subtitle { font-size: .92rem; } main { width: min(100% - 24px,1080px); padding-top: 22px; } fieldset, .notice { padding: 16px; } .name-grid, .two-col, .three-col, .address-grid { grid-template-columns: 1fr; } .actions { display: grid; } button.primary, button.secondary, a.button { width: 100%; } }
   </style>
 </head>
 <body>
+  <header class="brand-header">
+    <div class="brand-inner">
+      <img class="brand-logo" src="/collette-law-logo.png" alt="Collette Law PLLC logo" width="96" height="96">
+      <div>
+        <p class="brand-kicker">Collette Law</p>
+        <h1>VS-165 Vital Statistics Form</h1>
+        <span class="brand-subtitle">Information on Suit Affecting the Family Relationship</span>
+      </div>
+    </div>
+  </header>
   <main>
     <p class="eyebrow">Texas VS-165 preview server</p>
-    <h1>Family relationship suit intake</h1>
+    <h2>Vital statistics form information</h2>
     <p>Preview mode generates a fillable PDF locally and skips email delivery. The production Next app uses the same PDF field mapping.</p>
     <div id="notice" class="notice" hidden></div>
     <form id="form">
@@ -336,7 +354,7 @@ const html = String.raw`<!doctype html>
       </fieldset>
       <div class="actions">
         <p>Required fields are marked with <em>*</em>.</p>
-        <button type="submit" class="primary" id="submit">Submit intake</button>
+        <button type="submit" class="primary" id="submit">Submit form</button>
       </div>
     </form>
   </main>
@@ -527,6 +545,13 @@ const server = http.createServer(async (request, response) => {
 
     if (request.method === "GET" && url.pathname === "/health") {
       sendJson(response, 200, { ok: true });
+      return;
+    }
+
+    if (request.method === "GET" && url.pathname === "/collette-law-logo.png") {
+      const logo = await readFile(path.join(ROOT, "public", "collette-law-logo.png"));
+      response.writeHead(200, { "Content-Type": "image/png" });
+      response.end(logo);
       return;
     }
 

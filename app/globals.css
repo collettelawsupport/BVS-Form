@@ -1,18 +1,23 @@
 :root {
   color-scheme: light;
-  --background: #f6f7f4;
+  --background: #f7f7f8;
   --surface: #ffffff;
-  --surface-muted: #eef4f1;
-  --text: #17211d;
-  --muted: #5d6862;
-  --line: #cdd8d2;
-  --accent: #0f766e;
-  --accent-dark: #0b5d56;
-  --focus: #b45309;
+  --surface-muted: #f7f4f3;
+  --surface-rose: #f7f4f3;
+  --text: #20242b;
+  --heading: #252a32;
+  --muted: #667085;
+  --line: #e7d9d5;
+  --input-line: #cfd6e1;
+  --navy: #0b1f3a;
+  --navy-dark: #07172b;
+  --rose: #d89b8c;
+  --rose-deep: #9f5f68;
+  --focus: #d89b8c;
   --danger: #b42318;
-  --warning-bg: #fff7df;
-  --warning-line: #e6b450;
-  --shadow: 0 18px 50px rgba(23, 33, 29, 0.1);
+  --warning-bg: #fff7f4;
+  --warning-line: rgba(216, 155, 140, 0.7);
+  --shadow: 0 18px 48px rgba(11, 31, 58, 0.08);
 }
 
 * {
@@ -29,8 +34,7 @@ body {
   margin: 0;
   color: var(--text);
   background: var(--background);
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
 }
 
@@ -53,22 +57,77 @@ a {
   color: inherit;
 }
 
-.page-shell {
-  width: min(1120px, calc(100% - 32px));
+.brand-header {
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(216, 155, 140, 0.16), transparent 28rem),
+    linear-gradient(135deg, var(--navy-dark), var(--navy));
+  border-bottom: 5px solid var(--rose);
+}
+
+.brand-header-inner {
+  display: flex;
+  width: min(1080px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 32px 0 56px;
+  padding: 26px 0 28px;
+  gap: 22px;
+  align-items: center;
+}
+
+.brand-logo {
+  width: 118px;
+  height: 118px;
+  border: 1px solid rgba(216, 155, 140, 0.55);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  object-fit: contain;
+}
+
+.brand-copy {
+  min-width: 0;
+}
+
+.brand-copy p {
+  margin: 0 0 4px;
+  color: #f1c5bb;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.brand-copy h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(2rem, 5vw, 3.05rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.brand-copy span {
+  display: block;
+  margin-top: 8px;
+  color: #f8e7e1;
+  font-size: 1rem;
+}
+
+.page-shell {
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 56px;
 }
 
 .page-heading {
   margin-bottom: 24px;
 }
 
-.page-heading h1,
-.confirmation-panel h1 {
+.page-heading h2,
+.confirmation-panel h2 {
   max-width: 780px;
   margin: 0;
-  font-size: 4.2rem;
-  line-height: 0.96;
+  color: var(--heading);
+  font-size: 1.7rem;
+  line-height: 1.16;
   letter-spacing: 0;
 }
 
@@ -82,7 +141,7 @@ a {
 
 .eyebrow {
   margin: 0 0 10px;
-  color: var(--accent-dark);
+  color: var(--rose-deep);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -101,8 +160,12 @@ fieldset,
   padding: 22px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.88);
+  background: var(--surface);
   box-shadow: var(--shadow);
+}
+
+.intake-form fieldset:nth-of-type(even) {
+  background: var(--surface-rose);
 }
 
 .section-header {
@@ -111,6 +174,7 @@ fieldset,
 
 .section-header h2 {
   margin: 0;
+  color: var(--heading);
   font-size: 1.22rem;
   line-height: 1.2;
   letter-spacing: 0;
@@ -170,7 +234,7 @@ input,
 select {
   width: 100%;
   min-height: 44px;
-  border: 1px solid #bfcac4;
+  border: 1px solid var(--input-line);
   border-radius: 6px;
   padding: 9px 11px;
   color: var(--text);
@@ -183,7 +247,7 @@ select:focus,
 button:focus-visible,
 a:focus-visible {
   border-color: var(--focus);
-  box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.18);
+  box-shadow: 0 0 0 3px rgba(216, 155, 140, 0.28);
   outline: none;
 }
 
@@ -192,9 +256,9 @@ a:focus-visible {
   grid-template-columns: repeat(2, minmax(90px, 1fr));
   gap: 4px;
   padding: 4px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(159, 95, 104, 0.36);
   border-radius: 8px;
-  background: var(--surface-muted);
+  background: #ffffff;
 }
 
 .segmented-control label {
@@ -218,11 +282,11 @@ a:focus-visible {
 
 .segmented-control input:checked + span {
   color: #ffffff;
-  background: var(--accent);
+  background: var(--navy);
 }
 
 .segmented-control input:focus-visible + span {
-  box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.18);
+  box-shadow: 0 0 0 3px rgba(216, 155, 140, 0.28);
 }
 
 .children-stack {
@@ -235,7 +299,7 @@ a:focus-visible {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fbfcfa;
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .child-panel-header {
@@ -262,14 +326,14 @@ a:focus-visible {
 }
 
 .primary-action {
-  border: 1px solid var(--accent-dark);
+  border: 1px solid var(--navy);
   padding: 0 18px;
   color: #ffffff;
-  background: var(--accent);
+  background: var(--navy);
 }
 
 .primary-action:hover {
-  background: var(--accent-dark);
+  background: var(--navy-dark);
 }
 
 .secondary-action {
@@ -277,10 +341,15 @@ a:focus-visible {
   width: fit-content;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--accent);
+  border: 1px solid rgba(159, 95, 104, 0.44);
   padding: 0 14px;
-  color: var(--accent-dark);
+  color: var(--navy);
   background: #ffffff;
+}
+
+.secondary-action:hover {
+  border-color: var(--rose-deep);
+  background: #fff7f4;
 }
 
 .text-button {
@@ -318,7 +387,7 @@ a:focus-visible {
 
 .warning-block {
   border: 1px solid var(--warning-line);
-  color: #6f4b00;
+  color: var(--rose-deep);
   background: var(--warning-bg);
 }
 
@@ -334,7 +403,7 @@ a:focus-visible {
 }
 
 .confirmation-shell {
-  min-height: 100vh;
+  min-height: calc(100vh - 178px);
   display: grid;
   align-items: center;
 }
@@ -348,9 +417,18 @@ a:focus-visible {
 }
 
 @media (max-width: 860px) {
-  .page-heading h1,
-  .confirmation-panel h1 {
-    font-size: 3rem;
+  .brand-header-inner {
+    align-items: flex-start;
+  }
+
+  .brand-logo {
+    width: 92px;
+    height: 92px;
+  }
+
+  .page-heading h2,
+  .confirmation-panel h2 {
+    font-size: 1.48rem;
   }
 
   .name-grid,
@@ -367,13 +445,32 @@ a:focus-visible {
 }
 
 @media (max-width: 620px) {
-  .page-heading h1,
-  .confirmation-panel h1 {
-    font-size: 2.25rem;
+  .brand-header-inner {
+    width: min(100% - 24px, 1080px);
+    padding: 20px 0 22px;
+    gap: 14px;
+  }
+
+  .brand-logo {
+    width: 72px;
+    height: 72px;
+  }
+
+  .brand-copy h1 {
+    font-size: 1.8rem;
+  }
+
+  .brand-copy span {
+    font-size: 0.92rem;
+  }
+
+  .page-heading h2,
+  .confirmation-panel h2 {
+    font-size: 1.32rem;
   }
 
   .page-shell {
-    width: min(100% - 24px, 1120px);
+    width: min(100% - 24px, 1080px);
     padding-top: 22px;
   }
 
